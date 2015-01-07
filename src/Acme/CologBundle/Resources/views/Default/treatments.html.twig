@@ -1,0 +1,38 @@
+{% extends 'AcmeCologBundle::layout.html.twig' %}
+{% block body %}
+
+    {% block content %}
+        <h2 class="page-header">Kezelések</h2>
+
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Kezelés</th>
+                    <th>Ár(Ft)</th>
+                    <th>Időtartam</th>
+                    <th>Szerkesztés</th>
+                    <th>Törlés</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for treatments in treatment %}
+                    <tr>
+                        <td>{{ treatments.id }}</td>
+                        <td>{{ treatments.name }}</td>
+                        <td>{{ treatments.price }}-Ft.</td>
+                        <td>{{ treatments.time }}</td>
+                        <td><a class="btn btn-warning" href="{{ path('_updateTreatments') }}?id={{ treatments.id }}">Szerkesztés</a></td>
+                        <td><a class="btn btn-danger" href="{{ path('_deleteTreatments') }}?id={{ treatments.id }}">Törlés</a></td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <a class="btn btn-success" href="{{ path('_addTreatments') }}">Új kezelés</a>
+
+    {% endblock %}
+
+
+{% endblock %}

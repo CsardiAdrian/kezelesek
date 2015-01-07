@@ -1,0 +1,36 @@
+{{ form_start(addtreatmentform) }}
+
+    {{ form_errors(addtreatmentform) }}
+
+<div class="form-group">
+    <div class="input-group">
+        <span class="input-group-addon">Kezelés</span>
+    {{ form_errors(addtreatmentform.name) }}
+    {{ form_widget(addtreatmentform.name) }}
+    </div>
+</div>
+
+<div class="form-group">
+    <div class="input-group">
+        <span class="input-group-addon">Időtartam</span>
+        {{ form_errors(addtreatmentform.time) }}
+        {{ form_widget(addtreatmentform.time) }}
+    </div>
+</div>
+
+<div class="form-group">
+    <div class="input-group">
+        <span class="input-group-addon">Ár</span>
+        {{ form_errors(addtreatmentform.price) }}
+        {{ form_widget(addtreatmentform.price) }}
+        <span class="input-group-addon">Ft</span>
+    </div>
+</div>
+<div class="btn-group">
+    <a class="btn btn-default" href="{{ path('_treatments') }}">Vissza</a>
+    {{ form_widget(addtreatmentform.Ment) }}
+</div>
+
+    {{ form_row(addtreatmentform._token) }}
+
+{{ form_end(addtreatmentform) }}

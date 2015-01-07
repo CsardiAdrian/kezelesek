@@ -1,0 +1,14 @@
+{% extends 'AcmeCologBundle::layout.html.twig' %}
+{% block body %}
+
+    {% block header %}
+        <h2>Regisztráció</h2>
+    {% endblock %}
+
+    {% block content %}
+        <div class="container">
+        {% include 'AcmeCologBundle:Default:Blocks/RegistrationForm.html.twig' %}
+    {% endblock %}
+    </div>
+
+{% endblock %}

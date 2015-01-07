@@ -1,0 +1,38 @@
+
+<form name="guest" method="post" action="/colog.hu/path/web/app_dev.php/guest/update?id={{ id ? guest.id }}">
+
+    <div class="form-group">
+        <div class="input-group">
+            <span class="input-group-addon">Név</span>
+            <input id="guest_name" name="guest[name]" required="required" class="form-control"
+                   value="{{ guest ? guest.name }}" type="text">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="input-group">
+            <span class="input-group-addon">Email</span>
+            <input id="guest_email" name="guest[email]" required="required" class="form-control"
+                   value="{{ guest ? guest.email }}" type="text">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="input-group">
+            <span class="input-group-addon">Telefon</span>
+            <input id="guest_phone" name="guest[phone]" required="required" class="form-control"
+                   value="{{ guest ? guest.phone }}" type="text">
+        </div>
+    </div>
+    <div class="btn-group">
+        <a class="btn btn-default" href="/colog.hu/path/web/app_dev.php/guest">Vissza</a>
+        <button type="submit" id="guest_Ment" name="guest[Ment]" class="btn btn-success">Ment</button>
+    </div>
+
+    <input id="guest__token" name="guest[_token]" value="ESdmyu9QTX6Ehenq1XkUT3TWhEySlOVJXCOi-hMXBWU"
+           type="hidden">
+
+    <input id="id" name="id" value="{{ id ? guest.id }}" type="hidden">
+
+</form>
+

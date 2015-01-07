@@ -1,0 +1,18 @@
+{% extends 'AcmeCologBundle::layout.html.twig' %}
+{% block body %}
+
+    {% block header %}
+        <h2>Időpont Törlése</h2>
+    {% endblock %}
+
+    {% block content %}
+        <div class="container">
+        <h3>Időpont törölve!</h3>
+        <div class="btn-group">
+            <a class="btn btn-default" href="{{ path('_events') }}">Vissza</a>
+            <a class="btn btn-success" href="{{ path('_addEvent') }}">Új Időpont</a>
+        </div>
+    {% endblock %}
+    </div>
+
+{% endblock %}

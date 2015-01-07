@@ -1,0 +1,48 @@
+{% extends 'AcmeCologBundle::layout.html.twig' %}
+{% block body %}
+
+    {% block content %}
+        <h2 class="page-header">Időpontok</h2>
+
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Megnevezés</th>
+                    <th>Kezelés</th>
+                    <th>Kezelés Ára</th>
+                    <th>Kezelés Időtartama</th>
+                    <th>Vendég</th>
+                    <th>Időpont</th>
+                    <th>Szerkesztés</th>
+                    <th>Törlés</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for EventEntity in events %}
+                    <tr>
+                        <td>{{ EventEntity.id }}</td>
+                        <td>{{ EventEntity.title }}</td>
+                        <td>{{ EventEntity.treatmentsId.name }}</td>
+                        <td>{{ EventEntity.treatmentsId.price }}.-Ft</td>
+                        <td>{{ EventEntity.treatmentsId.time }}</td>
+                        <td>{{ EventEntity.guestId.name }}</td>
+                        <td>{{ EventEntity.startDatetime|date('Y-m-d H:i') }}</td>
+                        <td><a class="btn btn-warning" href="{{ path('_updateTreatments') }}?id={{ EventEntity.id }}">Szerkesztés</a></td>
+                        <td><a class="btn btn-danger" href="{{ path('_deleteEvent') }}?id={{ EventEntity.id }}">Törlés</a></td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <a class="btn btn-success" href="{{ path('_addEvent') }}">Új időpont</a>
+
+        <form action="{{ path('_sendMail') }}">
+        <button type="submit">Email küldés!</button>
+        </form>
+
+    {% endblock %}
+
+
+{% endblock %}

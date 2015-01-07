@@ -1,0 +1,39 @@
+
+        <form name="treatments" method="post" action="/colog.hu/path/web/app_dev.php/treatments/update?id={{ id ? treatments.id }}">
+
+        <div class="form-group">
+            <div class="input-group">
+                <span class="input-group-addon">Kezelés</span>
+                <input id="treatments_name" name="treatments[name]" required="required" class="form-control"
+                       value="{{ treatments ? treatments.name }}" type="text">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="input-group">
+                <span class="input-group-addon">Időtartam</span>
+                <input id="treatments_time" name="treatments[time]" required="required" class="form-control"
+                       value="{{ treatments ? treatments.time }}" type="text">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="input-group">
+                <span class="input-group-addon">Ár</span>
+                <input id="treatments_price" name="treatments[price]" required="required" class="form-control"
+                       value="{{ treatments ? treatments.price }}" type="text">
+                <span class="input-group-addon">Ft</span>
+            </div>
+        </div>
+        <div class="btn-group">
+            <a class="btn btn-default" href="/colog.hu/path/web/app_dev.php/treatments">Vissza</a>
+            <button type="submit" id="treatments_Ment" name="treatments[Ment]" class="btn btn-success">Ment</button>
+        </div>
+
+        <input id="treatments__token" name="treatments[_token]" value="ESdmyu9QTX6Ehenq1XkUT3TWhEySlOVJXCOi-hMXBWU"
+               type="hidden">
+
+        <input id="id" name="id" value="{{ id ? treatments.id }}" type="hidden">
+
+        </form>
+

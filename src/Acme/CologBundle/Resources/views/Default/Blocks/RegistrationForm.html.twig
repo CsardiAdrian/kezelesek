@@ -1,0 +1,46 @@
+{{ form_start(regform) }}
+
+    {{ form_errors(regform) }}
+
+    <div class="form-group">
+        {{ form_label(regform.name) }}
+        {{ form_errors(regform.name) }}
+        {{ form_widget(regform.name) }}
+    </div>
+
+    <div class="form-group">
+        {{ form_label(regform.nick_name) }}
+        {{ form_errors(regform.nick_name) }}
+        {{ form_widget(regform.nick_name) }}
+    </div>
+
+    <div class="form-group">
+        {{ form_label(regform.email) }}
+        {{ form_errors(regform.email) }}
+        {{ form_widget(regform.email) }}
+    </div>
+
+    <div class="form-group">
+        {{ form_label(regform.password) }}
+        {{ form_errors(regform.password) }}
+        {{ form_widget(regform.password) }}
+    </div>
+
+            {#&#123;&#35;{{ form_label(regform.admin) }}&#35;&#125;#}
+                {#{{ form_errors(regform.admin) }}#}
+                {#{{ form_widget(regform.admin) }}#}
+
+
+
+
+    {#<div class="form-group">#}
+        {#{{ form_label(regform.img) }}#}
+        {#{{ form_errors(regform.img) }}#}
+        {#{{ form_widget(regform.img) }}#}
+    {#</div>#}
+
+    {{ form_widget(regform.Ment) }}
+
+    {{ form_row(regform._token) }}
+
+{{ form_end(regform) }}

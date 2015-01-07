@@ -1,0 +1,47 @@
+{{ form_start(addEventForm) }}
+
+    {{ form_errors(addEventForm) }}
+
+<div class="form-group">
+    <div class="input-group">
+        <span class="input-group-addon">Megnevezés</span>
+        {{ form_errors(addEventForm.title) }}
+        {{ form_widget(addEventForm.title) }}
+    </div>
+</div>
+
+<div class="form-group">
+    <div class="input-group">
+        <span class="input-group-addon">Időpont</span>
+        {{ form_errors(addEventForm.startDatetime) }}
+        {{ form_widget(addEventForm.startDatetime) }}
+    </div>
+</div>
+<div class="form-group">
+<div class="row-fluid">
+
+        <select id="treatment" name="treatment">
+            <option value="0">Válasszon kezelést...</option>
+            {% for treatments in treatment %}
+                <option value="{{ treatments.id }}">{{ treatments.id }}. {{ treatments.name }}</option>
+            {% endfor %}
+        </select>
+
+        <select id="guest" name="guest">
+            <option value="0">Válasszon vendéget...</option>
+            {% for guest in guest %}
+                <option value="{{ guest.id }}">{{ guest.id }}. {{ guest.name }}</option>
+            {% endfor %}
+        </select>
+
+</div>
+</div>
+
+<div class="btn-group">
+    <a class="btn btn-default" href="{{ path('_events') }}">Vissza</a>
+    {{ form_widget(addEventForm.Ment) }}
+</div>
+
+{{ form_row(addEventForm._token) }}
+
+{{ form_end(addEventForm) }}

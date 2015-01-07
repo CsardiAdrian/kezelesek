@@ -1,0 +1,8 @@
+<?xml version="1.0" ?>
+<services>
+    <service id="acme.cologbundle.calendar_listener" class="Acme\CologBundle\EventListener\CalendarEventListener">
+        <argument type="service" id="doctrine.orm.entity_manager" />
+        <tag name="kernel.event_listener" event="calendar.load_events" method="loadEvents" />
+    </service>
+
+</services>

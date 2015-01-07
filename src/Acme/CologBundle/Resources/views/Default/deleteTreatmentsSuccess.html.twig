@@ -1,0 +1,18 @@
+{% extends 'AcmeCologBundle::layout.html.twig' %}
+{% block body %}
+
+    {% block header %}
+        <h2>Kezelés Törlése</h2>
+    {% endblock %}
+
+    {% block content %}
+        <div class="container">
+        <h3>A kezelés törölve!</h3>
+        <div class="btn-group">
+            <a class="btn btn-default" href="{{ path('_treatments') }}">Vissza</a>
+            <a class="btn btn-success" href="{{ path('_addTreatments') }}">Új kezelés</a>
+        </div>
+    {% endblock %}
+    </div>
+
+{% endblock %}

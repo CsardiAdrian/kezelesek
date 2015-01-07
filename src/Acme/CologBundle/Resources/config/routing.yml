@@ -1,0 +1,99 @@
+_homepage:
+    path:     /
+    defaults: { _controller: AcmeCologBundle:Default:index }
+
+_registration:
+    path:     /registration
+    defaults: { _controller: AcmeCologBundle:User:registration }
+
+_registration_success:
+   path:     /registration/success
+   defaults: { _controller: AcmeCologBundle:User:registrationSuccess }
+
+_guest:
+   path:     /guest
+   defaults: { _controller: AcmeCologBundle:Guest:guest }
+
+_addGuest:
+    path:     /guest/add
+    defaults: { _controller: AcmeCologBundle:Guest:addGuest }
+
+_guestSuccess:
+    path:     /guest/add/success
+    defaults: { _controller: AcmeCologBundle:Guest:guestSuccess }
+
+_deleteGuest:
+    path:     /guest/delete/
+    defaults: { _controller: AcmeCologBundle:Guest:deleteGuest }
+
+_deleteGuestSuccess:
+     path:     /guest/delete/success
+     defaults: { _controller: AcmeCologBundle:Guest:deleteGuestSuccess }
+
+_updateGuest:
+   path:     /guest/update
+   defaults: { _controller: AcmeCologBundle:Guest:updateGuest }
+
+_treatments:
+   path:     /treatments
+   defaults: { _controller: AcmeCologBundle:Treatments:listTreatments }
+
+_addTreatments:
+   path:     /treatments/add
+   defaults: { _controller: AcmeCologBundle:Treatments:addTreatments }
+
+_addTreatmentsSuccess:
+    path:     /treatments/add/success
+    defaults: { _controller: AcmeCologBundle:Treatments:addTreatmentsSuccess }
+
+_updateTreatments:
+    path:     /treatments/update
+    defaults: { _controller: AcmeCologBundle:Treatments:updateTreatments }
+
+_deleteTreatments:
+    path:     /treatments/delete
+    defaults: { _controller: AcmeCologBundle:Treatments:deleteTreatments }
+
+_deleteTreatmentsSuccess:
+     path:     /treatments/delete/success
+     defaults: { _controller: AcmeCologBundle:Treatments:deleteTreatmentsSuccess }
+
+fos_user_security_login:
+     path:     /login
+     defaults: { _controller: AcmeCologBundle:Treatments:loginAction }
+
+fullcalendar_loader:
+    pattern: /fc-load-calendar-events
+    defaults: { _controller: AcmeCologBundle:Calendar:loadCalendar }
+    options:
+        expose: true
+
+_events:
+   path:     /events
+   defaults: { _controller: AcmeCologBundle:Event:listEvents }
+
+_addEvent:
+   path:     /events/add
+   defaults: { _controller: AcmeCologBundle:Event:addEvent }
+
+_addEventSuccess:
+    path:     /events/add/success
+    defaults: { _controller: AcmeCologBundle:Event:addEventSuccess }
+
+_deleteEvent:
+    path:     /events/delete
+    defaults: { _controller: AcmeCologBundle:Event:deleteEvent }
+
+_deleteEventSuccess:
+     path:     /events/delete/success
+     defaults: { _controller: AcmeCologBundle:Event:deleteEventSuccess }
+
+_updateEvent:
+     path:     /events/update/
+     defaults: { _controller: AcmeCologBundle:Event:updateEvent }
+
+_sendMail:
+    path:     /sendemail
+    defaults: { _controller: AcmeCologBundle:Event:sendMail }
+
+

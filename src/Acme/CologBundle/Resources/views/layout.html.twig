@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="{{ _charset }}" />
+        <meta name="robots" content="noindex,nofollow" />
+        <title>{% block title %}COSMETIC LOGIN{% endblock %}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+        {% block stylesheets %}  
+            {% stylesheets '@bootstrap_less' combine=true %}  
+            <link href="{{ asset_url }}" type="text/css" rel="stylesheet">
+            {% endstylesheets %}
+            {% stylesheets '@AcmeCologBundle/Resources/public/css/*' filter='cssrewrite' %}
+            <link rel="stylesheet" href="{{ asset_url }}" />
+            {% endstylesheets %}
+
+            <link rel="stylesheet" href="{{ asset('bundles/adesignscalendar/css/fullcalendar/fullcalendar.css') }}" />
+        {% endblock %}
+    {% block head %}{% endblock %}
+</head>
+<body class="sf-reset">
+
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="{{ path('_homepage') }}">Cosmetic Login</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="{{ path('_homepage') }}">Vezérlő</a></li>
+                    <li><a href="{{ path('fos_user_profile_show') }}">Profil</a></li>
+                    <li><a href="{{ path('fos_user_security_logout') }}">Kijelentkezés</a></li>
+                </ul>
+                <form class="navbar-form navbar-right">
+                    <input type="text" class="form-control" placeholder="Search...">
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-3 col-md-2 sidebar">
+                <ul class="nav nav-sidebar">
+                    <li class="active"><a href="{{ path('_homepage') }}">Vezérlő <span class="sr-only">(current)</span></a></li>
+                    <li><a href="{{ path('_events') }}" role="button">Időpontok »</a></li>
+                    <li><a href="{{ path('_guest') }}" role="button">Vendégek »</a></li>
+                    <li><a href="{{ path('_treatments') }}" role="button">Kezelések »</a></li>
+                    <li><a href="{{ path('fos_user_profile_show') }}" role="button">Profil »</a></li>
+                </ul>
+                <footer>
+                    <p>© Colog.hu 2014 - Minden jog fentartva.</p>
+                </footer>
+            </div>
+            <div class="col-sm-9 col-sm-offset-2 col-md-10 main">
+                {% block content %}
+                <h2 class="page-header">Vezérlő</h2>
+
+                <div class="row placeholders">
+                    <div class="col-xs-6 col-sm-3 placeholder">
+                        <h4><a class="btn btn-info" href="{{ path('_events') }}" role="button">Időpontok »</a></h4>
+                        <h4><a class="btn btn-success" href="{{ path('_addEvent') }}" role="button">+ Új időpont</a></h4>
+                    </div>
+                    <div class="col-xs-6 col-sm-3 placeholder">
+                        <h4><a class="btn btn-default" href="{{ path('_guest') }}" role="button">Vendégek »</a></h4>
+                        <h4><a class="btn btn-success" href="{{ path('_addGuest') }}" role="button">+ Új vendég</a></h4>
+                    </div>
+                    <div class="col-xs-6 col-sm-3 placeholder">
+                        <h4><a class="btn btn-warning" href="{{ path('_treatments') }}" role="button">Kezelések »</a></h4>
+                        <h4><a class="btn btn-success" href="{{ path('_addTreatments') }}" role="button">+ Új kezelés</a></h4>
+                    </div>
+                </div>
+
+                <h2 class="sub-header">Időpontok</h2>
+                <div id='wrap' class="col-sm-9 col-sm-offset-0 col-md-12">
+                    {#<div id='external-events' class="col-sm-9 col-sm-offset-0 col-md-3">#}
+                        {#<h4>Draggable Events</h4>#}
+                        {#{% for treatments in treatment %}#}
+                        {#<div class='fc-event' id="{{ treatments.id }}">{{ treatments.name }}</div>#}
+                        {#{% endfor %}#}
+                    {#</div>#}
+                    <div class="col-sm-12 col-sm-offset-0 col-md-10">
+                        {% include 'ADesignsCalendarBundle::calendar.html.twig' %}
+                    </div>
+                    </div>
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+
+
+    {% block javascripts %}  
+        {% javascripts '@jquery_js' '@bootstrap_js' filter='?yui_js' combine=true %}  
+        <script src="{{ asset_url }}"></script>
+        {% endjavascripts %}
+
+        {% javascripts '@AcmeCologBundle/Resources/public/js/*' %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+        {% endjavascripts %}
+        <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+        <script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/adesignscalendar/js/fullcalendar/jquery.fullcalendar.min.js') }}"></script>
+        {#<script type="text/javascript" src="{{ asset('bundles/adesignscalendar/js/calendar-settings.js') }}"></script>#}
+        <script>
+            $('#treatments_time').datetimepicker({
+                datepicker:false,
+                format:'H:i',
+                step:5
+            });
+
+            $('#event_startDatetime').datetimepicker();
+            $('#event_endDatetime').datetimepicker();
+
+        </script>
+
+
+
+
+
+    {% endblock %}  
+</body>
+</html>
+
+

@@ -1,0 +1,35 @@
+{{ form_start(guestregform) }}
+
+    {{ form_errors(guestregform) }}
+
+<div class="form-group">
+    <div class="input-group">
+        <span class="input-group-addon">Név</span>
+    {{ form_errors(guestregform.name) }}
+    {{ form_widget(guestregform.name) }}
+    </div>
+</div>
+
+<div class="form-group">
+    <div class="input-group">
+        <span class="input-group-addon">Email</span>
+    {{ form_errors(guestregform.email) }}
+    {{ form_widget(guestregform.email) }}
+    </div>
+</div>
+
+<div class="form-group">
+    <div class="input-group">
+        <span class="input-group-addon">Telefon</span>
+    {{ form_errors(guestregform.phone) }}
+    {{ form_widget(guestregform.phone) }}
+    </div>
+</div>
+<div class="btn-group">
+    <a class="btn btn-default" href="{{ path('_guest') }}">Vissza</a>
+    {{ form_widget(guestregform.Ment) }}
+</div>
+
+    {{ form_row(guestregform._token) }}
+
+{{ form_end(guestregform) }}

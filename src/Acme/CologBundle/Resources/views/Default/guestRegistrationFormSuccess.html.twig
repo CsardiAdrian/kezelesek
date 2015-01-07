@@ -1,0 +1,18 @@
+{% extends 'AcmeCologBundle::layout.html.twig' %}
+{% block body %}
+
+    {% block header %}
+        <h2>Vendég regisztráció</h2>
+    {% endblock %}
+
+    {% block content %}
+        <div class="container">
+        <h3>A vendég elmentve, ügyes vagy!</h3>
+        <div class="btn-group">
+            <a class="btn btn-default" href="{{ path('_guest') }}">Vissza</a>
+            <a class="btn btn-success" href="{{ path('_addGuest') }}">Új vendég</a>
+        </div>
+    {% endblock %}
+    </div>
+
+{% endblock %}
