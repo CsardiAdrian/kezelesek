@@ -1,0 +1,49 @@
+{% extends 'AcmeCologBundle::layout.html.twig' %}
+{% block body %}
+
+    {% block content %}
+        <h2 class="page-header">Felhasználók szerkesztése</h2>
+
+        <div class="table-responsive">
+            <form name="users" method="post" action="{{ path('_editusers') }}">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Név</th>
+                    <th>Email</th>
+                    <th>Aktív</th>
+                    <th>kozmetikus</th>
+                    <th>Utolsó bejelentkezés</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for users in users %}
+                    <tr>
+                        <td>{{ users.id }}</td>
+                        <td><input type="text" value="{{ users.username }}"> </td>
+                        <td><input type="text" value="{{ users.email }}"></td>
+                        <td><input type="number" value="{{ users.enabled }}" min="0" max="1"></td>
+                        <td><input type="number" value="{{ users.cosmetician }}" min="0" max="1" ></td>
+                        <td>{{ users.lastLogin|date('Y-m-d H:i') }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+                <div class="btn-group">
+                    <a class="btn btn-default" href="{{ path('_users') }}">Vissza</a>
+                    <button type="submit" id="users_Ment" name="users[Ment]" class="btn btn-success">Ment</button>
+                </div>
+
+
+            </form>
+        </div>
+
+    {% endblock %}
+
+
+{% endblock %}
+
+
+
+

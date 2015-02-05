@@ -24,9 +24,9 @@ class EventEntity
     /**
      * @var string
      *
-     * @ORM\Column(name="title", type="string", length=255)
+     * @ORM\Column(name="cosmetician", type="string", length=255)
      */
-    private $title;
+    private $cosmetician;
 
     /**
      * @ORM\ManyToOne(targetEntity="treatments")
@@ -35,11 +35,11 @@ class EventEntity
     private $TreatmentsId;
 
     /**
-     * @ORM\ManyToOne(targetEntity="guest")
-     * @ORM\JoinColumn(name="guest_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="\Acme\UserBundle\Entity\User")
+     * @ORM\JoinColumn(name="guser_id", referencedColumnName="id")
      **/
 
-    private $guestId;
+    private $guserId;
 
     /**
      * @var \DateTime
@@ -73,26 +73,26 @@ class EventEntity
     }
 
     /**
-     * Set title
+     * Set cosmetician
      *
-     * @param string $title
+     * @param string $cosmetician
      * @return EventEntity
      */
-    public function setTitle($title)
+    public function setCosmetician($cosmetician)
     {
-        $this->title = $title;
+        $this->cosmetician = $cosmetician;
 
         return $this;
     }
 
     /**
-     * Get title
+     * Get cosmetician
      *
      * @return string 
      */
-    public function getTitle()
+    public function getCosmetician()
     {
-        return $this->title;
+        return $this->cosmetician;
     }
 
     /**
@@ -119,26 +119,26 @@ class EventEntity
     }
 
     /**
-     * Set guestId
+     * Set guserId
      *
-     * @param string $guestId
+     * @param string $guserId
      * @return EventEntity
      */
-    public function setGuestId($guestId)
+    public function setGuserId($guserId)
     {
-        $this->guestId = $guestId;
+        $this->guserId = $guserId;
 
         return $this;
     }
 
     /**
-     * Get guestId
+     * Get guserId
      *
      * @return string 
      */
-    public function getGuestId()
+    public function getGuserId()
     {
-        return $this->guestId;
+        return $this->guserId;
     }
 
     /**

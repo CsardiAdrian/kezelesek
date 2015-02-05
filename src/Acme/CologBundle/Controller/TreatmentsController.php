@@ -32,8 +32,10 @@ class TreatmentsController extends Controller
         $securityContext = $this->container->get('security.context');
         if ($securityContext->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
             // authenticated REMEMBERED, FULLY will imply REMEMBERED (NON anonymous)
+            $user = $this->getUser();
             return $this->render('AcmeCologBundle:Default:treatments.html.twig', array(
-                'treatment' => $treatment
+                'treatment' => $treatment,
+                'user' => $user
             ));
         }else{
 
@@ -66,12 +68,13 @@ class TreatmentsController extends Controller
             $em->flush();
             return $this->redirect($this->generateUrl('_addTreatmentsSuccess'));
         }
-
+        $user = $this->getUser();
         $securityContext = $this->container->get('security.context');
         if ($securityContext->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
             // authenticated REMEMBERED, FULLY will imply REMEMBERED (NON anonymous)
             return $this->render('AcmeCologBundle:Default:addtreatments.html.twig', array(
                 'addtreatmentform' => $addtreatmentform->createView(),
+                'user' => $user
             ));
         }else{
 
@@ -156,6 +159,7 @@ class TreatmentsController extends Controller
         $em = $this->getDoctrine()->getManager();
         $treatments = $em->getRepository('AcmeCologBundle:treatments')->find($id);
         $addtreatmentform = $this->createForm(new TreatmentsType(), $treatments);
+        $user = $this->getUser();
         if ($request->getMethod() == 'POST') {
             $addtreatmentform->bind($request);
             $id = $request->query->get('id');
@@ -174,7 +178,8 @@ class TreatmentsController extends Controller
         return $this->render('AcmeCologBundle:Default:updatetreatments.html.twig', array(
             'addtreatmentform' => $addtreatmentform->createView(),
             'id' => $id,
-            'treatments' => $treatments
+            'treatments' => $treatments,
+            'user' => $user
         ));
     }
 

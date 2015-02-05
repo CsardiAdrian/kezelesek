@@ -15,4 +15,9 @@
         </div>
     </div>
 </div>
+<form id="userForm{{ user.id }}" method="post" action="{{ path('fos_user_profile_edit_post') }}">
+    <input type="hidden" name="userId" value="{{ user.id }}" id="userId"/>
+    <a onclick="document.getElementById('userForm{{ user.id }}').submit();" class="btn btn-warning">Szerkesztés</a>
+</form>
+
 

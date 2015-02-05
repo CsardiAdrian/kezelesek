@@ -6,6 +6,14 @@ _registration:
     path:     /registration
     defaults: { _controller: AcmeCologBundle:User:registration }
 
+_users:
+    path:     /users
+    defaults: { _controller: AcmeCologBundle:User:listUsers }
+
+_editusers:
+    path:     /users/edit
+    defaults: { _controller: AcmeCologBundle:User:editUsers }
+
 _registration_success:
    path:     /registration/success
    defaults: { _controller: AcmeCologBundle:User:registrationSuccess }

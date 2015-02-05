@@ -4,9 +4,9 @@
 
 <div class="form-group">
     <div class="input-group">
-        <span class="input-group-addon">Megnevezés</span>
-        {{ form_errors(addEventForm.title) }}
-        {{ form_widget(addEventForm.title) }}
+        <span class="input-group-addon">Kozmetikus</span>
+        {{ form_errors(addEventForm.cosmetician) }}
+        {{ form_widget(addEventForm.cosmetician) }}
     </div>
 </div>
 
@@ -26,13 +26,19 @@
                 <option value="{{ treatments.id }}">{{ treatments.id }}. {{ treatments.name }}</option>
             {% endfor %}
         </select>
-
-        <select id="guest" name="guest">
+    {% if is_granted("ROLE_SUPER_ADMIN") %}
+        <select id="user" name="user">
             <option value="0">Válasszon vendéget...</option>
-            {% for guest in guest %}
-                <option value="{{ guest.id }}">{{ guest.id }}. {{ guest.name }}</option>
+            {% for users in users %}
+                <option value="{{ users.id }}">{{ users.id }}. {{ users.username }}</option>
             {% endfor %}
         </select>
+    {% else %}
+        {#<select id="user" name="user">#}
+            {#<option value="{{ user.id }}">{{ user.id }}. {{ user.username }}</option>#}
+        {#</select>#}
+        <input  id="user" name="user" type="hidden" value="{{ user.id }}">
+    {% endif %}
 
 </div>
 </div>

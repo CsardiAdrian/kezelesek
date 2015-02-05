@@ -4,7 +4,7 @@ namespace Acme\CologBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Session\Session;
 
-use Acme\CologBundle\Entity\user;
+use Acme\UserBundle\Entity\User;
 use Acme\CologBundle\Form\Type\UserType;
 
 use Acme\CologBundle\Entity\treatments;
@@ -21,8 +21,8 @@ class DefaultController extends Controller
 {
     public function indexAction(Request $request)
     {
-        $securityContext = $this->container->get('security.context');
-        if ($securityContext->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
+//        $securityContext = $this->container->get('security.context');
+//        if ($securityContext->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
             // authenticated REMEMBERED, FULLY will imply REMEMBERED (NON anonymous)
             $treatments = new treatments();
             $treatments->setName('Mezopen arckezelés')
@@ -34,24 +34,25 @@ class DefaultController extends Controller
             /** @var $repository \Doctrine\ORM\EntityManager */
 
             $treatment = $repository->findAll();
+            $user = $this->getUser();
             return $this->render('AcmeCologBundle:Default:index.html.twig', array(
-                'treatment' => $treatment
+                'user' => $user
             ));
-        }else{
-
-            return $this->redirect($this->generateUrl('fos_user_security_login'));
-        }
+//        }else{
+//
+//            return $this->redirect($this->generateUrl('fos_user_security_login'));
+//        }
     }
 
     public function loginAction(){
-        $securityContext = $this->container->get('security.context');
-        if ($securityContext->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
+//        $securityContext = $this->container->get('security.context');
+//        if ($securityContext->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
             // authenticated REMEMBERED, FULLY will imply REMEMBERED (NON anonymous)
             return $this->render('AcmeCologBundle:Default:index.html.twig');
-        }else{
-
-            return $this->redirect($this->generateUrl('fos_user_security_login'));
-        }
+//        }else{
+//
+//            return $this->redirect($this->generateUrl('fos_user_security_login'));
+//        }
     }
 
 

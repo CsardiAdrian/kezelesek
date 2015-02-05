@@ -4,7 +4,8 @@ namespace Acme\CologBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Session\Session;
 
-use Acme\CologBundle\Entity\user;
+use FOS\UserBundle\FOSUserEvents;
+use Acme\UserBundle\Entity\User;
 use Acme\CologBundle\Form\Type\UserType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -15,17 +16,72 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 class UserController extends Controller
 {
+    //  List Function *****************************/
+    public function listUsersAction()
+    {
+        $repository = $this->getDoctrine()->getRepository('UserBundle:User');
+        /** @var $repository \Doctrine\ORM\EntityManager */
+
+        $users = $repository->findAll();
+        $securityContext = $this->container->get('security.context');
+        if ($securityContext->isGranted('ROLE_SUPER_ADMIN')) {
+            // authenticated REMEMBERED, FULLY will imply REMEMBERED (NON anonymous)
+            $user = $this->getUser();
+            return $this->render('AcmeCologBundle:Default:users.html.twig', array(
+                'users' => $users,
+                'user' => $user
+            ));
+        }else{
+
+            return $this->redirect($this->generateUrl('fos_user_security_login'));
+        }
+    }
+
+//  Edit Function *****************************/
+    public function editUsersAction()
+    {
+        $repository = $this->getDoctrine()->getRepository('UserBundle:User');
+        /** @var $repository \Doctrine\ORM\EntityManager */
+
+        $users = $repository->findAll();
+        $securityContext = $this->container->get('security.context');
+        if ($securityContext->isGranted('ROLE_SUPER_ADMIN')) {
+                $request = Request::createFromGlobals();
+                $username = $request->request->get('username');
+                $email = $request->request->get('email');
+                $enabled = $request->request->get('enabled');
+                $cosmetician = $request->request->get('cosmetician');
+                $em = $this->getDoctrine()->getManager();
+                $usersedit = $em->getRepository('UserBundle:User')->find(1);
+//            exit(\Doctrine\Common\Util\Debug::dump($usersedit));
+            $usersedit->setUsername($username);
+            $usersedit->setEmail($email);
+            $usersedit->setEnabled($enabled);
+            $usersedit->setCosmetician($cosmetician);
+                $em->flush();
+
+            $user = $this->getUser();
+            return $this->render('AcmeCologBundle:Default:editUsers.html.twig', array(
+                'users' => $users,
+                'user' => $user
+            ));
+        }else{
+
+            return $this->redirect($this->generateUrl('fos_user_security_login'));
+        }
+
+    }
 
     public function registrationAction(Request $request)
     {
         $user = new user();
-
-        $user->setName('Csárdi Adrián')
-            ->setNickName('Enddy')
-            ->setEmail('support@aceimprt.hu')
-            ->setPassword(351288)
-            ->setAdmin(0)
-        ;
+//
+//        $user->setName('Csárdi Adrián')
+//            ->setNickName('Enddy')
+//            ->setEmail('support@aceimprt.hu')
+//            ->setPassword(351288)
+//            ->setAdmin(0)
+//        ;
 
 
         $regform = $form = $this->createForm(new UserType(), $user, array(

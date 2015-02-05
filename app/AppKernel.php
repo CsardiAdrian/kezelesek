@@ -18,7 +18,7 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new Acme\CologBundle\AcmeCologBundle(),
             new FOS\UserBundle\FOSUserBundle(),
-            new \Acme\UserBundle\UserBundle(),
+            new Acme\UserBundle\UserBundle(),
             new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
             new ADesigns\CalendarBundle\ADesignsCalendarBundle(),
         );

@@ -9,7 +9,7 @@
                 <thead>
                 <tr>
                     <th>#</th>
-                    <th>Megnevezés</th>
+                    <th>Kozmetikus</th>
                     <th>Kezelés</th>
                     <th>Kezelés Ára</th>
                     <th>Kezelés Időtartama</th>
@@ -23,11 +23,11 @@
                 {% for EventEntity in events %}
                     <tr>
                         <td>{{ EventEntity.id }}</td>
-                        <td>{{ EventEntity.title }}</td>
+                        <td>{{ EventEntity.cosmetician }}</td>
                         <td>{{ EventEntity.treatmentsId.name }}</td>
                         <td>{{ EventEntity.treatmentsId.price }}.-Ft</td>
                         <td>{{ EventEntity.treatmentsId.time }}</td>
-                        <td>{{ EventEntity.guestId.name }}</td>
+                        <td>{{ EventEntity.guserId.username }}</td>
                         <td>{{ EventEntity.startDatetime|date('Y-m-d H:i') }}</td>
                         <td><a class="btn btn-warning" href="{{ path('_updateTreatments') }}?id={{ EventEntity.id }}">Szerkesztés</a></td>
                         <td><a class="btn btn-danger" href="{{ path('_deleteEvent') }}?id={{ EventEntity.id }}">Törlés</a></td>

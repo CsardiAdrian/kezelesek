@@ -19,9 +19,41 @@ class User extends BaseUser
      */
     protected $id;
 
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="cosmetician", type="boolean")
+     */
+    private $cosmetician;
+
+    /**
+     * Set cosmetician
+     *
+     * @param boolean $cosmetician
+     * @return user
+     */
+    public function setCosmetician($cosmetician)
+    {
+        $this->cosmetician = $cosmetician;
+
+        return $this;
+    }
+
+    /**
+     * Get cosmetician
+     *
+     * @return boolean
+     */
+    public function getCosmetician()
+    {
+        return $this->cosmetician;
+    }
+
     public function __construct()
     {
         parent::__construct();
         // your own logic
+
+
     }
 }

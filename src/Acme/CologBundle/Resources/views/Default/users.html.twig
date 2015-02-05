@@ -1,0 +1,42 @@
+{% extends 'AcmeCologBundle::layout.html.twig' %}
+{% block body %}
+
+    {% block content %}
+        <h2 class="page-header">Felhasználók</h2>
+
+        <div class="table-responsive">
+
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Név</th>
+                    <th>Email</th>
+                    <th>Aktív</th>
+                    <th>kozmetikus</th>
+                    <th>Utolsó bejelentkezés</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for users in users %}
+                    <tr>
+                        <td>{{ users.id }}</td>
+                        <td>
+                            <a id="userForm{{ users.id }}" href="{{ path('fos_user_profile_show_post') }}">{{ users.username }}</a>
+                        </td>
+                        <td>{{ users.email }}</td>
+                        <td>{{ users.enabled }}</td>
+                        <td>{{ users.lastLogin|date('Y-m-d H:i') }}</td>
+                        <td>{{ users.cosmetician }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+        </div>
+        <a class="btn btn-success" href="{{ path('fos_user_registration_register') }}">Új felhasznaló</a>
+
+    {% endblock %}
+
+
+{% endblock %}
