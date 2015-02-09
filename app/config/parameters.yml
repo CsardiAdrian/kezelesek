@@ -1,0 +1,17 @@
+# This file is auto-generated during the composer install
+parameters:
+    database_driver: pdo_mysql
+    database_host: localhost
+    database_port: null
+    database_name: kezelsek_colog
+    database_user: kezelsek_colog
+    database_password: PSGN]t@383OR
+    mailer_transport: smtp
+    mailer_host: ta52.tarhely.eu
+    mailer_user: support@aceimport.hu
+    mailer_password: '8f+lGTCcnO#A'
+    locale: hu
+    secret: 4e3ec757a724b12dbef6205ab89de8e46611711e
+    debug_toolbar: true
+    debug_redirects: false
+    use_assetic_controller: true
