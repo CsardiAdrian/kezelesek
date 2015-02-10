@@ -24,16 +24,16 @@ class DefaultController extends Controller
 //        $securityContext = $this->container->get('security.context');
 //        if ($securityContext->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
             // authenticated REMEMBERED, FULLY will imply REMEMBERED (NON anonymous)
-            $treatments = new treatments();
-            $treatments->setName('Mezopen arckezelés')
-                ->setPrice('3200')
-                ->setTime('30')
-            ;
+//            $treatments = new treatments();
+//            $treatments->setName('Mezopen arckezelés')
+//                ->setPrice('3200')
+//                ->setTime('30')
+//            ;
 
-            $repository = $this->getDoctrine()->getRepository('AcmeCologBundle:treatments');
-            /** @var $repository \Doctrine\ORM\EntityManager */
-
-            $treatment = $repository->findAll();
+//            $repository = $this->getDoctrine()->getRepository('AcmeCologBundle:treatments');
+//            /** @var $repository \Doctrine\ORM\EntityManager */
+//
+//            $treatment = $repository->findAll();
             $user = $this->getUser();
             return $this->render('AcmeCologBundle:Default:index.html.twig', array(
                 'user' => $user

@@ -3,7 +3,7 @@ acme_colog:
     prefix:   /
 
 fos_user:
-    resource: "@UserBundle/Resources/config/routing.yml"
+    resource: "@UserBundle/Resources/Config/routing.yml"
 
 fos_js_routing:
     resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"

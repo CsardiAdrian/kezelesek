@@ -21,7 +21,7 @@
         "jquery/jquery":  "1.11.*",
         "incenteev/composer-parameter-handler": "~2.0",
         "oyejorge/less.php": "~1.5",
-        "twitter/bootstrap": "*",
+        "twitter/bootstrap": "v3.0.0",
         "friendsofsymfony/jsrouting-bundle": "v1.5.4",
         "friendsofsymfony/user-bundle": "~2.0@dev",
         "adesigns/calendar-bundle": "dev-master"

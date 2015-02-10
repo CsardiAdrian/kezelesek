@@ -59,7 +59,7 @@ assetic:
             - '%kernel.root_dir%/../vendor/twitter/bootstrap/js/button.js'
             - '%kernel.root_dir%/../vendor/twitter/bootstrap/js/collapse.js'
             - '%kernel.root_dir%/../vendor/twitter/bootstrap/js/carousel.js'
-#            - '%kernel.root_dir%/../vendor/twitter/bootstrap/js/typeahead.js'
+            - '%kernel.root_dir%/../vendor/twitter/bootstrap/js/typeahead.js'
             - '%kernel.root_dir%/../vendor/twitter/bootstrap/js/affix.js'
         filters: [?yui_js]
     bootstrap_less:
