@@ -22,11 +22,11 @@ class EventEntity
     private $id;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="cosmetician", type="string", length=255)
-     */
-    private $cosmetician;
+     * @ORM\ManyToOne(targetEntity="\Acme\UserBundle\Entity\User")
+     * @ORM\JoinColumn(name="cosmeticianId", referencedColumnName="id")
+     **/
+
+    private $cosmeticianId;
 
     /**
      * @ORM\ManyToOne(targetEntity="treatments")
@@ -73,26 +73,26 @@ class EventEntity
     }
 
     /**
-     * Set cosmetician
+     * Set cosmeticianId
      *
-     * @param string $cosmetician
+     * @param string $cosmeticianId
      * @return EventEntity
      */
-    public function setCosmetician($cosmetician)
+    public function setCosmeticianId($cosmeticianId)
     {
-        $this->cosmetician = $cosmetician;
+        $this->cosmeticianId = $cosmeticianId;
 
         return $this;
     }
 
     /**
-     * Get cosmetician
+     * Get cosmeticianId
      *
-     * @return string 
+     * @return string
      */
-    public function getCosmetician()
+    public function getCosmeticianId()
     {
-        return $this->cosmetician;
+        return $this->cosmeticianId;
     }
 
     /**

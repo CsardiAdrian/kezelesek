@@ -23,7 +23,7 @@
                 {% for EventEntity in events %}
                     <tr>
                         <td>{{ EventEntity.id }}</td>
-                        <td>{{ EventEntity.cosmetician }}</td>
+                        <td>{{ EventEntity.cosmeticianId.username }}</td>
                         <td>{{ EventEntity.treatmentsId.name }}</td>
                         <td>{{ EventEntity.treatmentsId.price }}.-Ft</td>
                         <td>{{ EventEntity.treatmentsId.time }}</td>

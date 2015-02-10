@@ -43,6 +43,10 @@ class EventController extends Controller
     {
         $treatment = $this->getDoctrine()->getRepository('AcmeCologBundle:treatments')->findAll();
         $user = $this->getDoctrine()->getRepository('UserBundle:user')->findAll();
+        $cosmetician = $this->getDoctrine()->getRepository('UserBundle:user')->findBy(
+            array('cosmetician' => true)
+        );
+
         $event = new EventEntity();
         $event->setAllday(0);
 
@@ -71,6 +75,10 @@ class EventController extends Controller
             $guserId = $this->getDoctrine()->getRepository('UserBundle:User')->find($uid);
             $event->setGuserId($guserId);
 
+            $cid = $_POST['cosmetician'];
+            $cosmeticianId = $this->getDoctrine()->getRepository('UserBundle:User')->find($cid);
+            $event->setCosmeticianId($cosmeticianId);
+
             $em->persist($event);
 //          exit(\Doctrine\Common\Util\Debug::dump($event));
             $em->flush();
@@ -86,6 +94,7 @@ class EventController extends Controller
                 'users' => $user,
                 'user' => $profiluser,
                 'treatment' => $treatment,
+                'cosmetician' => $cosmetician
             ));
         } else {
 

@@ -40,36 +40,42 @@ class UserController extends Controller
 //  Edit Function *****************************/
     public function editUsersAction()
     {
-        $repository = $this->getDoctrine()->getRepository('UserBundle:User');
-        /** @var $repository \Doctrine\ORM\EntityManager */
-
-        $users = $repository->findAll();
         $securityContext = $this->container->get('security.context');
-        if ($securityContext->isGranted('ROLE_SUPER_ADMIN')) {
-                $request = Request::createFromGlobals();
-                $username = $request->request->get('username');
-                $email = $request->request->get('email');
-                $enabled = $request->request->get('enabled');
-                $cosmetician = $request->request->get('cosmetician');
-                $em = $this->getDoctrine()->getManager();
-                $usersedit = $em->getRepository('UserBundle:User')->find(1);
-//            exit(\Doctrine\Common\Util\Debug::dump($usersedit));
-            $usersedit->setUsername($username);
-            $usersedit->setEmail($email);
-            $usersedit->setEnabled($enabled);
-            $usersedit->setCosmetician($cosmetician);
-                $em->flush();
+        if($securityContext->isGranted('ROLE_SUPER_ADMIN')){
+            $request = Request::createFromGlobals();
+            $id = $request->query->get('id');
+            $em = $this->getDoctrine()->getManager();
+            $users = $em->getRepository('UserBundle:User')->find($id);
 
             $user = $this->getUser();
+            if ($request->getMethod() == 'POST') {
+
+                $id = $request->query->get('id');
+                $username = $_POST['username'];
+                $email = $_POST['email'];
+                $enabled = $_POST['enabled'];
+                $cosmetician = $_POST['cosmetician'];
+                $password = $_POST['password'];
+                $em = $this->getDoctrine()->getManager();
+                $users = $em->getRepository('UserBundle:User')->find($id);
+                $users->setUsername($username);
+                $users->setEmail($email);
+                $users->setEnabled($enabled);
+                $users->setCosmetician($cosmetician);
+                $users->setPlainPassword($password);
+//                exit(\Doctrine\Common\Util\Debug::dump($users));
+                $em->flush();
+                return $this->redirect($this->generateUrl('_users'));
+        }
             return $this->render('AcmeCologBundle:Default:editUsers.html.twig', array(
+                'id' => $id,
+                'user' => $user,
                 'users' => $users,
-                'user' => $user
             ));
         }else{
 
             return $this->redirect($this->generateUrl('fos_user_security_login'));
         }
-
     }
 
     public function registrationAction(Request $request)

@@ -5,7 +5,7 @@
         <h2 class="page-header">Felhasználók szerkesztése</h2>
 
         <div class="table-responsive">
-            <form name="users" method="post" action="{{ path('_editusers') }}">
+            <form name="users" method="POST" action="/colog.hu/path/web/app_dev.php/users/edit?id={{ id ? users.id }}">
             <table class="table table-striped">
                 <thead>
                 <tr>
@@ -14,20 +14,22 @@
                     <th>Email</th>
                     <th>Aktív</th>
                     <th>kozmetikus</th>
+                    <th>Jelszó</th>
                     <th>Utolsó bejelentkezés</th>
                 </tr>
                 </thead>
                 <tbody>
-                {% for users in users %}
+
                     <tr>
                         <td>{{ users.id }}</td>
-                        <td><input type="text" value="{{ users.username }}"> </td>
-                        <td><input type="text" value="{{ users.email }}"></td>
-                        <td><input type="number" value="{{ users.enabled }}" min="0" max="1"></td>
-                        <td><input type="number" value="{{ users.cosmetician }}" min="0" max="1" ></td>
+                        <td><input type="text" id="username" name="username" required="required" value="{{ users ? users.username }}" class="form-control" > </td>
+                        <td><input type="email" id="email" name="email" required="required" value="{{ users ? users.email }}" class="form-control" ></td>
+                        <td><input type="number" id="enabled" name="enabled" required="required" value="{{ users ? users.enabled }}" min="0" max="1" class="form-control" ></td>
+                        <td><input type="number" id="cosmetician" name="cosmetician" required="required" value="{{ users ? users.cosmetician }}" min="0" max="1" class="form-control" ></td>
+                        <td><input type="password" id="password" name="password" required="required" value="{{ users ? users.password }}" class="form-control" ></td>
                         <td>{{ users.lastLogin|date('Y-m-d H:i') }}</td>
                     </tr>
-                {% endfor %}
+
                 </tbody>
             </table>
                 <div class="btn-group">
@@ -35,7 +37,10 @@
                     <button type="submit" id="users_Ment" name="users[Ment]" class="btn btn-success">Ment</button>
                 </div>
 
+                <input id="users__token" name="users[_token]" value="ESdmyu9QTX6Ehenq1XkUT3TWhEySlOVJXCOi-hMXBWU"
+                       type="hidden">
 
+                <input id="id" name="id" value="{{ id ? users.id }}" type="hidden">
             </form>
         </div>
 

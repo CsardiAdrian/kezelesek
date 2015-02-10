@@ -25,6 +25,11 @@ class UserType extends AbstractType
                     'class' => 'form-control'
                 )
             ))
+            ->add('cosmetician', 'text',array(
+                'attr' => array(
+                    'class' => 'form-control'
+                )
+            ))
             ->add('password', 'password',array(
                 'attr' => array(
                     'class' => 'form-control'
@@ -46,7 +51,7 @@ class UserType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Acme\CologBundle\Entity\user',
+            'data_class' => 'Acme\UserBundle\Entity\User',
         ));
     }
 }

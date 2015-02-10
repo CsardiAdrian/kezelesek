@@ -16,11 +16,12 @@ class AppKernel extends Kernel
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
-            new Acme\CologBundle\AcmeCologBundle(),
-            new FOS\UserBundle\FOSUserBundle(),
-            new Acme\UserBundle\UserBundle(),
-            new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
             new ADesigns\CalendarBundle\ADesignsCalendarBundle(),
+            new Acme\CologBundle\AcmeCologBundle(),
+            new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
+            new FOS\UserBundle\FOSUserBundle(),
+            new Acme\UserBundle\UserBundle()
+//            new Braincrafted\Bundle\BootstrapBundle\BraincraftedBootstrapBundle()
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

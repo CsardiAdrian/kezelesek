@@ -10,11 +10,6 @@ class EventType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('cosmetician', 'text',array(
-                'attr' => array(
-                    'class' => 'form-control'
-                )
-            ))
             ->add('startDatetime', 'text',array(
                 'attr' => array(
                     'class' => 'form-control'

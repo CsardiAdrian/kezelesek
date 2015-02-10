@@ -12,21 +12,41 @@
         "doctrine/orm": "~2.2,>=2.2.3",
         "doctrine/doctrine-bundle": "~1.2",
         "twig/extensions": "~1.0",
-        "symfony/assetic-bundle": "~2.3",
+        "symfony/assetic-bundle": "2.1.*",
         "symfony/swiftmailer-bundle": "v2.3.7",
         "symfony/monolog-bundle": "~2.4",
         "sensio/distribution-bundle": "~3.0",
         "sensio/framework-extra-bundle": "~3.0",
-        "incenteev/composer-parameter-handler": "~2.0",
-        "leafo/lessphp": "v0.4.0",
-        "twitter/bootstrap": "v3.0.0",
-        "friendsofsymfony/jsrouting-bundle": "v1.5.4",
         "components/jquery": "dev-master",
+        "jquery/jquery":  "1.11.*",
+        "incenteev/composer-parameter-handler": "~2.0",
+        "oyejorge/less.php": "~1.5",
+        "twitter/bootstrap": "*",
+        "friendsofsymfony/jsrouting-bundle": "v1.5.4",
         "friendsofsymfony/user-bundle": "~2.0@dev",
         "adesigns/calendar-bundle": "dev-master"
 
     },
-    "require-dev": {
+
+"repositories": [
+    {
+        "type": "package",
+        "package": {
+            "version": "2.2.1",
+            "name": "twitter/bootstrap",
+            "source": {
+                "url": "https://github.com/twitter/bootstrap.git",
+                "type": "git",
+                "reference": "master"
+            },
+            "dist": {
+                "url": "https://github.com/twitter/bootstrap/zipball/master",
+                "type": "zip"
+            }
+        }
+    }
+],
+"require-dev": {
         "sensio/generator-bundle": "~2.3"
     },
     "scripts": {

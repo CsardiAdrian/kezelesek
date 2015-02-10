@@ -41,10 +41,10 @@
                     {#<li><a href="{{ path('fos_user_security_logout') }}">Kijelentkezés</a></li>#}
                     {#</ul>#}
                     {#</li>#}
-
                     <div class="btn-group">
-                        <button class="btn"><a href="{{ path('fos_user_profile_show') }}">{{ user.username }}</a>
+                        <button class="btn"><a href="{{ path('fos_user_profile_show') }}">Adataim</a>
                         </button>
+
                         <button class="btn dropdown-toggle" data-toggle="dropdown">
                             <span class="caret"></span>
                         </button>
@@ -54,6 +54,7 @@
                     </div>
                 {% else %}
                     <li><a href="{{ path('fos_user_security_login') }}">Belépés</a></li>
+                    <li><a href="{{ path('fos_user_registration_register') }}">Regisztráció</a></li>
                 {% endif %}
             </ul>
             {#<form class="navbar-form navbar-right">#}
@@ -85,7 +86,7 @@
         </div>
         <div class="col-sm-9 col-sm-offset-2 col-md-10 main">
             {% block content %}
-                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                {% if is_granted("ROLE_SUPER_ADMIN") %}
                     <h2 class="page-header">Vezérlő</h2>
 
                     <div class="row placeholders">

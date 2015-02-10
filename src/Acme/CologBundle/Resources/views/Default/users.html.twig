@@ -15,6 +15,7 @@
                     <th>Aktív</th>
                     <th>kozmetikus</th>
                     <th>Utolsó bejelentkezés</th>
+                    <th>Szerkesztés</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -26,8 +27,9 @@
                         </td>
                         <td>{{ users.email }}</td>
                         <td>{{ users.enabled }}</td>
-                        <td>{{ users.lastLogin|date('Y-m-d H:i') }}</td>
                         <td>{{ users.cosmetician }}</td>
+                        <td>{{ users.lastLogin|date('Y-m-d H:i') }}</td>
+                        <td><a class="btn btn-default" href="{{ path('_editusers') }}?id={{ users.id }}">Szerkesztés</a></td>
                     </tr>
                 {% endfor %}
                 </tbody>

@@ -2,13 +2,6 @@
 
     {{ form_errors(addEventForm) }}
 
-<div class="form-group">
-    <div class="input-group">
-        <span class="input-group-addon">Kozmetikus</span>
-        {{ form_errors(addEventForm.cosmetician) }}
-        {{ form_widget(addEventForm.cosmetician) }}
-    </div>
-</div>
 
 <div class="form-group">
     <div class="input-group">
@@ -18,7 +11,13 @@
     </div>
 </div>
 <div class="form-group">
-<div class="row-fluid">
+    <div class="row-fluid">
+        <select id="cosmetician" name="cosmetician">
+            <option value="0">Válasszon kozmetikust...</option>
+            {% for cosmetician in cosmetician %}
+                <option value="{{ cosmetician.id }}">{{ cosmetician.id }}. {{ cosmetician.username }}</option>
+            {% endfor %}
+        </select>
 
         <select id="treatment" name="treatment">
             <option value="0">Válasszon kezelést...</option>

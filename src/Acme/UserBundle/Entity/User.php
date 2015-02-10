@@ -26,6 +26,8 @@ class User extends BaseUser
      */
     private $cosmetician;
 
+    protected $cosmeticianId;
+
     /**
      * Set cosmetician
      *
